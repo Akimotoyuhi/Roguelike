@@ -7,19 +7,31 @@ using Cysharp.Threading.Tasks;
 /// <summary>
 /// mapŽü‚è‚ÌŽ–‚ð‚·‚é
 /// </summary>
-public class Map : MonoBehaviour
+public class MapManager : MonoBehaviour
 {
     [SerializeField] MapCell _cell;
     [SerializeField] Transform _cellParent;
+    [SerializeField] MapData _mapData;
     [SerializeField] int _xSize;
     [SerializeField] int _ySize;
     [SerializeField] float _cellInterval;
     [SerializeField] Vector2 _basepoint;
     private MapCell[,] _cells;
+    private List<Eria> _erias;
 
     void Start()
     {
-        Create();
+        EriaDivision(_mapData.Datas[0]);
+        //Create();
+    }
+
+    /// <summary>
+    /// ‹æ‰æ‚Ì•ªŠ„
+    /// </summary>
+    private void EriaDivision(MapDatabase mapData)
+    {
+        int rx = Random.Range(mapData.MinEriaSize, (int)mapData.EriaSize.x - mapData.MinEriaSize);
+        int ry = Random.Range(mapData.MinEriaSize, (int)mapData.EriaSize.y - mapData.MinEriaSize);
     }
 
     /// <summary>
